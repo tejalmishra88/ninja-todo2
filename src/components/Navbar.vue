@@ -17,11 +17,12 @@
 <v-navigation-drawer  bottom temporary clipped absolute dark
        v-model="drawer"  class="primary">
 
-       <v-layout coloum align-center>
+       <v-layout coloum justify-center pl-10>
         <v-flex class="mt-5">
             <v-avatar size="100">
-                <img :src="" alt="">
+                <img src="/avatar-5.png" alt="">
             </v-avatar>
+            <p class="white--text subheading mt-1"> Tejal</p>
         </v-flex>
        </v-layout>
    <v-list>
