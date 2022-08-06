@@ -8,6 +8,30 @@
 
     </v-app-bar-title>
     <v-spacer></v-spacer>
+
+    
+    <!--dropdown-->
+    <v-menu offset-y>
+        <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+    <V-icon left> mdi-expand more</V-icon>
+        <span>Menu</span>
+        </v-btn>
+        </template>
+         <v-list>
+        <v-list-item
+          v-for="(item, index) in links"  :key="index"  >
+          <v-list-item-title>{{ item.text }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+    <!----->
+
         <v-btn text color="grey">
             <span>sign out</span>
             <v-icon right>mdi-arrow-right-bold-box </v-icon>
@@ -24,6 +48,9 @@
             </v-avatar>
             <p class="white--text subheading mt-1"> Tejal</p>
         </v-flex>
+        <v-flex>
+            <popup />
+        </v-flex>  
        </v-layout>
    <v-list>
     <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
@@ -41,7 +68,10 @@
    
 
 <script>
+import Popup from './popup.vue'
+
 export default{
+    components:{Popup},
     data(){
         return{
             drawer:false,

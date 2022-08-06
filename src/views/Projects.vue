@@ -8,15 +8,17 @@
  <v-container class="my-5">
    <v-expansion-panels>
     <v-expansion-panel
-      v-for="(item,i) in 5"
+      v-for="(item,i) in myProjects"
       :key="i"
     >
-      <v-expansion-panel-header>
-        projects
+      <v-expansion-panel-header >
+        new task
       </v-expansion-panel-header>
-      <div class="font-weight-bold">due by xx.xx.xx</div>
+    <div slot="header">{{item.title}}</div>
+      <v-card-text class="px-4 grey--text"></v-card-text>
+      <div class="font-weight-bold">due by {{item.due}}</div>
       <v-expansion-panel-content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+       {{item.title}} xyxxxxx
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-expansion-panels>
@@ -32,5 +34,22 @@
 </template>
 
 <script>
-  export default{}
+  export default{
+    data(){
+      return{
+         projects:[
+        {title:'Design a new website', person:'The Net Ninja', due:'31st Aug 2022', status:'ongoing'},
+        {title:'code up the homepage', person:'Tejal', due:'30st Aug 2022', status:'complete'},
+        {title:'Design video', person:' Ninja', due:'31st mar 2022', status:'overdue'},
+        {title:'create community forum', person:' Net Ninja', due:'31st july 2022', status:'ongoing'},
+         {title:'Design a new website..again', person:'The Net Ninja', due:'31st Aug 2022', status:'ongoing'},
+        ]
+      }
+    },
+    computed:{
+      myProjects(){
+        return this.projects.filter(project => { return project.person=== 'The Net Ninja'})
+      }
+    }
+  }
 </script>
